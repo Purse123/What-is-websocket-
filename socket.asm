@@ -1,3 +1,8 @@
+;; nasm -f elf64 socket.asm -o socket.o
+;; ld socket.o -o server
+;; ./server
+;; http://localhost:8080
+
 section .data
     sockaddr_in:
         .sin_family   dw 2          ; AF_INET (2)
