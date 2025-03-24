@@ -1,12 +1,13 @@
 ;; nasm -f elf64 socket.asm -o socket.o
 ;; ld socket.o -o server
 ;; ./server
+;; nc localhost 8080
 ;; http://localhost:8080
 
 section .data
     sockaddr_in:
         .sin_family   dw 2          ; AF_INET (2)
-        .sin_port     dw 0x901F     ; Port 8080 (big-endian)
+        .sin_port     dw 0x1b39     ; Port 6969
         .sin_addr     dd 0          ; INADDR_ANY (0.0.0.0)
         .sin_zero     dq 0          ; Padding (8 bytes)
 
