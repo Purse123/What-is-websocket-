@@ -22,16 +22,15 @@ int main(int argc, char *argv[]) {
   }
 
   // BIND
-  /* struct in_addr sin_addr = { */
-  /*   .s_addr = sizeof(addr); */
-  /* }; */
-  struct sockaddr_in addr = {
-    .sin_family = AF_INET,
-    .sin_port = htons(PORT),
-    .sin_addr.s_addr = htonl();
-  };
+  struct sockaddr_in addr;
 
-  bind(sockfd, &addr, sizeof(addr));
+  sin_addr.s_addr = sizeof(addr);
+  addr.sin_family = AF_INET;
+  addr.sin_port = htons(PORT);
+  // htonl -> host to network long
+  addr.sin_addr.s_addr = htonl(INADDR_ANY); // sin_addr is ip address of socket
+
+  bind(sockfd, (struct sockaddr*)&addr, sizeof(addr));
 
   return 0;
 }
