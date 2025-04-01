@@ -1,0 +1,23 @@
+format ELF64 executable
+
+segment readable writeable
+    sockfd dq 1
+
+segment readable executable
+entry main
+    ; tcp socket
+macro sock {
+    mov rax, 41
+    mov rdi, 2
+    mov rsi, 1
+    mov rdx, 6
+    syscall
+}
+main:
+    sock
+    mov [sockfd], rax ;socket descriptor
+
+exit:
+    xor rdi, rdi
+    mov rax, 60
+    syscall
